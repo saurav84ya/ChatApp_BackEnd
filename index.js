@@ -19,14 +19,16 @@ mongoose
 
 const PORT = process.env.PORT || 3000
 
-app.use(express.json())
-app.use(cookieParser())
-
 app.use(cors({
-  origin:"https://chat-app-front-end-alpha.vercel.app",
+  origin: "https://chat-app-front-end-alpha.vercel.app",
   credentials: true, 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
+
+app.options('*', cors()); // Enable pre-flight requests for all routes
+
+app.use(express.json())
+app.use(cookieParser())
 
 // Health check endpoint
 app.get("/", (req, res) => {
