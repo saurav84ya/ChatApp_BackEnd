@@ -23,7 +23,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use(cors({
-  origin: process.env.FRONTENDURL,
+  origin:"https://chat-app-front-end-alpha.vercel.app",
   credentials: true, 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
