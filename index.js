@@ -22,15 +22,21 @@ const PORT = process.env.PORT || 3000
 app.use(express.json())
 app.use(cookieParser())
 
-
-app.use(cors({origin: process.env.FRONTENDURL,
+app.use(cors({
+  origin: process.env.FRONTENDURL,
   credentials: true, 
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],}));
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}));
 
+// Health check endpoint
 app.get("/", (req, res) => {
   res.send("Hello World")
 })
 
+// Endpoint to check if the server is running
+app.get("/health", (req, res) => {
+  res.json({ message: "Server is running" });
+});
 
 import authRoutes from "./routes/auth.routes.js"
 import messageRoute from "./routes/message.routes.js"
