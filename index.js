@@ -20,10 +20,13 @@ mongoose
 const PORT = process.env.PORT || 3000
 
 app.use(cors({
-  origin: "https://chat-app-front-end-alpha.vercel.app",
+  origin: ["https://chat-app-front-end-alpha.vercel.app", "http://localhost:5173"],
   credentials: true, 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
+
+app.options('*', cors()); // Enable pre-flight requests for all routes
+
 
 app.options('*', cors()); // Enable pre-flight requests for all routes
 
